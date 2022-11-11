@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://10.15.151.70:5465/vnpt_dx
+    username: vnpt
+    password: vnpt@654321
+
+  jpa:
+    show-sql: true
+    hibernate:
+      # Hibernate_sequence' doesn't exist
+      use-new-id-generator-mappings: false
+      # Drop n create table, good for testing, comment this in production
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        default_schema: vnpt_dev
+        format_sql: false
