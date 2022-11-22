@@ -16,4 +16,7 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 
     @Query("SELECT e.id FROM Enterprise e WHERE e.id < 500000")
     List<Long> getListEnterpriseIdLessThan500k();
+
+    @Query("SELECT id FROM Enterprise WHERE provinceId = 21")
+    List<Long> getEnterpriseId();
 }

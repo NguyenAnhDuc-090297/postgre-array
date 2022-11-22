@@ -15,4 +15,6 @@ public class Enterprise {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "province_id")
+    private Long provinceId;
 }

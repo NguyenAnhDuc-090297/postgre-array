@@ -2,22 +2,16 @@ package com.ducnguyen.mappingpostgrearray.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class DataPartitionDto {
-
-    private Long id;
-
-    private Long parentId;
+@RequiredArgsConstructor
+public class TestDto {
 
     private String name;
-
-//    private Long listAmId;
-//
-//    private Integer amPermission;
+    private Integer age;
+    private String address;
 }

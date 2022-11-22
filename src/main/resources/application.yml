@@ -4,12 +4,17 @@ spring:
     url: jdbc:postgresql://10.15.151.70:5465/vnpt_dx
     username: vnpt
     password: vnpt@654321
+    hikari:
+      data-source-properties:
+        reWriteBatchedInserts: true
+#        useConfigs: maxPerformance
+        stringtype: unspecified
 
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       # Hibernate_sequence' doesn't exist
-      use-new-id-generator-mappings: false
+#      use-new-id-generator-mappings: false
       # Drop n create table, good for testing, comment this in production
       ddl-auto: none
     properties:
@@ -17,5 +22,6 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+          batch_size: 5000
         default_schema: vnpt_dev
         format_sql: false

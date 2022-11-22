@@ -12,31 +12,30 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "test_table_new", schema = "vnpt_dev")
-@TypeDefs({
-        @TypeDef(
-                name = "long-array",
-                typeClass = LongArrayType.class
-        )
-})
+@Table(name = "crm_data_partition", schema = "vnpt_dev")
 public class CrmDataPartition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "lst_admin_id", columnDefinition = "Long[]")
-    @Type(type = "long-array")
-    private Long[] lstAdminId;
+//    @Column(name = "lst_admin_id", columnDefinition = "Long[]")
+//    @Type(type = "long-array")
+//    private Long[] lstAdminId;
 
-    @Column(name = "lst_am_id", columnDefinition = "Long[]")
-    @Type(type = "long-array")
-    private Long[] lstAmId;
+//    @Column(name = "lst_am_id", columnDefinition = "Long[]")
+//    @Type(type = "long-array")
+//    private Long[] lstAmId;
+//
+//    @Column(name = "lst_customer_id", columnDefinition = "Long[]")
+//    @Type(type = "long-array")
+//    private Long[] lstCustomerId;
 
-    @Column(name = "lst_customer_id", columnDefinition = "Long[]")
-    @Type(type = "long-array")
-    private Long[] lstCustomerId;
+//    @Column(name = "am_permission")
+//    private Integer amPermission;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "am_permission")
-    private Integer amPermission;
+    @Column(name = "parent_id")
+    private Long parentId;
 }

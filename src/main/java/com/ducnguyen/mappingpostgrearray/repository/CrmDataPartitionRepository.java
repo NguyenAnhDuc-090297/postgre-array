@@ -4,6 +4,7 @@ import com.ducnguyen.mappingpostgrearray.dto.DataPartitionDto;
 import com.ducnguyen.mappingpostgrearray.entity.CrmDataPartition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,14 +13,17 @@ public interface CrmDataPartitionRepository extends JpaRepository<CrmDataPartiti
     @Query(value = "SELECT unnest(dp.lst_admin_id) as lst_admin_id FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = any(dp.lst_customer_id)", nativeQuery = true)
     List<Long> findByEnterPriseId(Long enterpriseId);
 
-    @Query(value = "SELECT unnest(dp.lst_admin_id) as lst_admin_id, dp.am_permission FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = any(dp.lst_customer_id)", nativeQuery = true)
-    List<DataPartitionDto> findByEnterPriseIdEn(Long enterpriseId);
-
-    @Query(value = "SELECT * FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = ANY(dp.lst_customer_id) AND :userId = any(dp.lst_admin_id) OR :userId = any(dp.lst_am_id) AND dp.am_permission > 1", nativeQuery = true)
-    List<CrmDataPartition> findByEnterPriseIdEnhanced(Long enterpriseId, Long userId);
-
-    @Query(value = "SELECT * FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = ANY(dp.lst_customer_id)", nativeQuery = true)
-    List<CrmDataPartition> listEnhanced(Long enterpriseId);
+//    @Query(value = "SELECT unnest(dp.lst_admin_id) as lst_admin_id FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = any(dp.lst_customer_id)", nativeQuery = true)
+//    List<Long> findByEnterPriseId(Long enterpriseId);
+//
+//    @Query(value = "SELECT unnest(dp.lst_admin_id) as lst_admin_id, dp.am_permission FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = any(dp.lst_customer_id)", nativeQuery = true)
+//    List<DataPartitionDto> findByEnterPriseIdEn(Long enterpriseId);
+//
+//    @Query(value = "SELECT * FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = ANY(dp.lst_customer_id) AND :userId = any(dp.lst_admin_id) OR :userId = any(dp.lst_am_id) AND dp.am_permission > 1", nativeQuery = true)
+//    List<CrmDataPartition> findByEnterPriseIdEnhanced(Long enterpriseId, Long userId);
+//
+//    @Query(value = "SELECT * FROM vnpt_dev.crm_data_partition dp WHERE :enterpriseId = ANY(dp.lst_customer_id)", nativeQuery = true)
+//    List<CrmDataPartition> listEnhanced(Long enterpriseId);
 
     @Query(value = "SELECT \n" +
             "   MAX (CASE \n" +
