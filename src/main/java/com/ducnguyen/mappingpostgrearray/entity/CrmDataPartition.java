@@ -36,6 +36,12 @@ public class CrmDataPartition {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "parent_id")
     private Long parentId;
+
+    @Column(nullable = false)
+    private Integer amPermission;
 }

@@ -15,5 +15,6 @@ public class TreeRecursive {
 
     private Long id;
     private String name;
+    private String code;
     private List<TreeRecursive> listChild;
 }

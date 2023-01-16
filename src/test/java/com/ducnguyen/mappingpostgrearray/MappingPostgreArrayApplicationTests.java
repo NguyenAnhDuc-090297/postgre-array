@@ -2,14 +2,17 @@ package com.ducnguyen.mappingpostgrearray;
 
 import com.ducnguyen.mappingpostgrearray.batch.BatchExecutor;
 import com.ducnguyen.mappingpostgrearray.dto.MappingPartitionEnterpriseDto;
+import com.ducnguyen.mappingpostgrearray.dto.TestDTO;
 import com.ducnguyen.mappingpostgrearray.entity.*;
 import com.ducnguyen.mappingpostgrearray.repository.*;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.util.ObjectUtils;
 
 import java.sql.SQLException;
@@ -171,5 +174,27 @@ class MappingPostgreArrayApplicationTests {
     @Test
     void deletePartitionMappingData() {
         partitionEnterpriseRepo.deleteAllByPartitionId(99L);
+    }
+
+    @Test
+    void getListPartitionId() {
+        Set<Long> setL = partitionEnterpriseRepo.listPartitionIdMatchedObjectAndCondition(0, 10250L);
+        setL.forEach(System.out::println);
+        setL.stream().map(aLong -> {
+            aLong -= 2L;
+            return aLong + 1L;
+        }).collect(Collectors.toSet());
+        System.out.println("co null ko?" + (Objects.isNull(setL) ? "co" : "khong"));
+    }
+
+    @Test
+    @WithMockUser
+    void setData() {
+        TestDTO testDTO = new TestDTO();
+//        Set<Long> sL = new HashSet<>();
+//        sL.add(1L);
+//        sL.add(5L);
+//        testDTO.setData(sL);
+        System.out.println(testDTO.getData().size());
     }
 }
